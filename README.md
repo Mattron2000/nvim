@@ -9,6 +9,7 @@
 - [How to install](#how-to-install)
 - [How to uninstall](#how-to-uninstall)
 - [Neovim configuration folder structure](#neovim-configuration-folder-structure)
+- [Special Thanks](#special-thanks)
 
 ---
 
@@ -27,6 +28,21 @@
 
 [git]: https://git-scm.com/
 
+- [**Clipboard provider**][provider-clipboard]: To make the system clipboard works with Neovim
+  - `wl-clipboard`, if you use Wayland;
+  - `xclip`, if you use X11;
+
+[provider-clipboard]: https://neovim.io/doc/user/provider.html#clipboard
+
+- [**Python provider**][provider-python]: For Python 3 integration
+
+[provider-python]: https://github.com/neovim/pynvim
+
+- [**Node.js provider**][provider-nodejs]: For Node.js integration, I recommend installing via Node Version Manager called [nvm][nvm]
+
+[provider-nodejs]: https://neovim.io/doc/user/provider.html#provider-nodejs
+[nvm]: https://github.com/nvm-sh/nvm#installing-and-updating
+
 ## Install dependencies
 
 ### Arch Linux
@@ -37,6 +53,26 @@ sudo pacman -S git # to make git clone for downloading my neovim configuration
 ### Neovim ###
 sudo pacman -S bob # Neovim Version Manager
 bob use latest # bob install the latest stable release of Neovim
+
+### Providers ###
+## Clipboard
+sudo pacman -S wl-clipboard # for Wayland
+# or
+sudo pacman -S xclip # for X11
+
+## Python
+sudo pacman -S python-pynvim # Python integration for Neovim
+
+## Node.js
+# Node Version Manager
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
+
+# Install latest LTS version of Node.js
+nvm install --lts
+nvm use --lts
+
+npm i neovim # Node.js integration for Neovim
 ```
 
 ## How to install
@@ -86,8 +122,20 @@ bob use latest # bob install the latest stable release of Neovim
 
 ```bash
 📁 nvim # root folder
+├── 🚫 .gitignore # ignore it... 😉
+├── 🏁 init.lua # starting point
+├── ⚙️ lua # where does all Neovim configuration reside
+│   └── 💚 core # Neovim's built-in configuration
+│       ├── 🌐 global.lua
+│       └── 🔘 options.lua
 └── 📖 README.md # manifest file
 ```
+
+## Special Thanks
+
+- [Josean Martinez][josean-martinez]: for the structure of Neovim's folders, very clean, simple and modular from which he inspired me to create this configuration.
+
+[josean-martinez]: https://www.youtube.com/watch?v=vdn_pKJUda8&list=PLnu5gT9QrFg36OehOdECFvxFFeMHhb_07&index=4
 
 ---
 
