@@ -7,7 +7,9 @@
 - [Install dependencies](#install-dependencies)
   - [Arch Linux](#arch-linux)
 - [How to install](#how-to-install)
+  - [PRO TIP](#pro-tip)
 - [How to uninstall](#how-to-uninstall)
+  - [If you have followed the PRO TIP](#if-you-have-followed-the-pro-tip)
 - [Neovim configuration folder structure](#neovim-configuration-folder-structure)
 - [Special Thanks](#special-thanks)
 
@@ -66,7 +68,7 @@ sudo pacman -S python-pynvim # Python integration for Neovim
 ## Node.js
 # Node Version Manager
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
+echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc # or ~/.zshrc or similar...
 
 # Install latest LTS version of Node.js
 nvm install --lts
@@ -101,6 +103,11 @@ npm i neovim # Node.js integration for Neovim
     nvim
     ```
 
+### PRO TIP
+
+If you already have the configuration organized by profiles as in [Neovim configuration folder structure](#neovim-configuration-folder-structure) chapter, then you can only clone this repo and move the "matteo" folder in ~/.config/nvim/lua/ .
+Finally, change init.lua in the root folder only with `require 'matteo'`.
+
 ## How to uninstall
 
 1. Do a clean uninstallation
@@ -118,16 +125,37 @@ npm i neovim # Node.js integration for Neovim
     [[ -d ~/.config/nvim.bak ]] && mv ~/.config/nvim.bak ~/.config/nvim
     ```
 
+### If you have followed the PRO TIP
+
+Just delete the folder of my profile.
+
+1. Do a clean uninstallation
+
+    ```bash
+    rm -rf ~/.config/nvim/lua/matteo
+    rm -rf ~/.local/share/nvim
+    rm -rf ~/.local/state/nvim
+    rm -rf ~/.cache/nvim
+    ```
+
+2. If you have a backup and want to use it, use this command
+
+    ```bash
+    [[ -d ~/.config/nvim.bak ]] && mv ~/.config/nvim.bak ~/.config/nvim
+    ```
+
 ## Neovim configuration folder structure
 
 ```bash
 📁 nvim # root folder
 ├── 🚫 .gitignore # ignore it... 😉
-├── 🏁 init.lua # starting point
+├── 🏁 init.lua # starting point (only select the profile)
 ├── ⚙️ lua # where does all Neovim configuration reside
-│   └── 💚 core # Neovim's built-in configuration
-│       ├── 🌐 global.lua
-│       └── 🔘 options.lua
+│   └── 👤 matteo # my neovim profile
+│       ├── 🏁 init.lua # starting point (apply only my settings)
+│       └── 💚 core # Neovim's built-in configuration
+│           ├── 🌐 global.lua
+│           └── 🔘 options.lua
 └── 📖 README.md # manifest file
 ```
 
@@ -135,7 +163,11 @@ npm i neovim # Node.js integration for Neovim
 
 - [Josean Martinez][josean-martinez]: for the structure of Neovim's folders, very clean, simple and modular from which he inspired me to create this configuration.
 
-[josean-martinez]: https://www.youtube.com/watch?v=vdn_pKJUda8&list=PLnu5gT9QrFg36OehOdECFvxFFeMHhb_07&index=4
+[josean-martinez]: https://youtu.be/vdn_pKJUda8
+
+- [Dillon Mulroy][dillon-mulroy]: for the small but powerful idea to put the configuration in a profile folder increasing exponentially the flexibility and speed of changing profile
+
+[dillon-mulroy]: https://youtu.be/oo_I5lAmdi0
 
 ---
 
