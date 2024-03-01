@@ -75,6 +75,9 @@ nvm install --lts
 nvm use --lts
 
 npm i neovim # Node.js integration for Neovim
+
+# Set XDG_STATE_HOME variable, useful for store backup files
+echo "export XDG_STATE_HOME=$HOME/.local/state" >> ~/.bashrc # or ~/.zshrc or similar...
 ```
 
 ## How to install
@@ -165,9 +168,10 @@ Just delete the folder of my profile.
 
 [josean-martinez]: https://youtu.be/vdn_pKJUda8
 
-- [Dillon Mulroy][dillon-mulroy]: for the small but powerful idea to put the configuration in a profile folder increasing exponentially the flexibility and speed of changing profile
+- [Dillon Mulroy][dillon-mulroy] and [Launch.nvim][launch.nvim]: for the small but powerful idea to put the configuration in a profile folder increasing exponentially the flexibility and speed of changing profile
 
 [dillon-mulroy]: https://youtu.be/oo_I5lAmdi0
+[launch.nvim]: https://github.com/LunarVim/Launch.nvim
 
 ---
 
